@@ -22,7 +22,7 @@ class DogListAdapter : ListAdapter<Dog, DogListAdapter.DogViewHolder>(DogsCompar
     }
 
     class DogViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val dogItemView: TextView = itemView.findViewById(R.id.textView)
+        private val dogItemView: TextView = itemView.findViewById(R.id.dog_name_textview)
 
         fun bind(text: String?) {
             dogItemView.text = text
