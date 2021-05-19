@@ -1,13 +1,19 @@
 package ch.leytto.cynoclient.ui.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
+import ch.leytto.cynoclient.db.entities.Dog
+import ch.leytto.cynoclient.model.DogRepository
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(private val repository: DogRepository) : ViewModel() {
+    val allDogs: LiveData<List<Dog>> = repository.allDogs.asLiveData();
+}
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+class HomeViewModelFactory(private val repository: DogRepository) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return HomeViewModel(repository) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
     }
-    val text: LiveData<String> = _text
 }

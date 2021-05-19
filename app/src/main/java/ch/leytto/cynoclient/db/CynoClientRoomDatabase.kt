@@ -1,5 +1,6 @@
 package ch.leytto.cynoclient.db
 import android.content.Context
+import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -10,7 +11,7 @@ import ch.leytto.cynoclient.db.entities.*
 import kotlinx.coroutines.CoroutineScope
 
 // Annotates class to be a Room Database with a table (entity) of the Word class
-@Database(entities = arrayOf(Breed::class, Category::class, Client::class, ClientTakeService::class, Consultation::class, Disease::class, Dog::class, DogHaveDisease::class, DogHaveService::class, Locality::class, Service::class), version = 1, exportSchema = false)
+@Database(entities = [Breed::class, Category::class, Client::class, ClientTakeService::class, Consultation::class, Disease::class, Dog::class, DogHaveDisease::class, DogHaveService::class, Locality::class, Service::class], version = 1, exportSchema = false)
 @TypeConverters(DateConverter::class)
 abstract class CynoClientRoomDatabase : RoomDatabase() {
 
@@ -35,6 +36,7 @@ abstract class CynoClientRoomDatabase : RoomDatabase() {
                 )
                     .createFromAsset("database/CynoClientBase.db")
                     .build()
+
                 INSTANCE = instance
                 // return instance
                 instance
