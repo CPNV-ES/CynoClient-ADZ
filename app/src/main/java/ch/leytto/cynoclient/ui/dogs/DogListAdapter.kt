@@ -1,4 +1,4 @@
-package ch.leytto.cynoclient.ui.home
+package ch.leytto.cynoclient.ui.dogs
 
 import android.view.LayoutInflater
 import android.view.View

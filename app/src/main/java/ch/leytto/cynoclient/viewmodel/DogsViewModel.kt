@@ -1,4 +1,4 @@
-package ch.leytto.cynoclient.ui.home
+package ch.leytto.cynoclient.ui.dogs
 
 import androidx.lifecycle.*
 import ch.leytto.cynoclient.db.entities.Dog
