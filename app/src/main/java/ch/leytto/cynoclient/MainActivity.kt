@@ -42,6 +42,8 @@ class MainActivity : AppCompatActivity() {
         speedDial.setOnActionSelectedListener(SpeedDialView.OnActionSelectedListener { actionItem ->
             when (actionItem.id) {
                 R.id.fab_action_create_client -> {
+                    val intent = Intent(this, CreateClientActivity::class.java)
+                    startActivity(intent)
                     return@OnActionSelectedListener true
                 }
                 R.id.fab_action_create_report -> {
