@@ -3,9 +3,13 @@ package ch.leytto.cynoclient.db.dao
 import androidx.room.*
 import ch.leytto.cynoclient.db.entities.Client
 import ch.leytto.cynoclient.db.entities.relations.ClientWithLocalityAndDogWithBreedAndDiseases
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ClientDao {
+
+    @Query("SELECT * FROM clients")
+    fun getClients(): Flow<List<Client>>
 
     @Transaction
     @Query("SELECT * FROM clients")

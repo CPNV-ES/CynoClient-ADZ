@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.dogs.DogsViewModel">
+    tools:context=".ui.dogs.DogsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/dogs_recycler"
+        android:id="@+id/clients_recycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="recyclerview_item" />
+        tools:listitem="@layout/client_recyclerview_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>

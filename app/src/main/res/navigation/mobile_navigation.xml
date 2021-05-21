@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_clients">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="ch.leytto.cynoclient.ui.dogs.DogsViewModel"
-        android:label="@string/menu_dogs"
-        tools:layout="@layout/fragment_home" />
-
-    <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_clients"
         android:name="ch.leytto.cynoclient.ui.clients.ClientsFragment"
         android:label="@string/menu_clients"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_clients" />
+
+    <fragment
+        android:id="@+id/nav_dogs"
+        android:name="ch.leytto.cynoclient.ui.dogs.DogsFragment"
+        android:label="@string/menu_dogs"
+        tools:layout="@layout/fragment_dogs" />
 
     <fragment
         android:id="@+id/nav_slideshow"

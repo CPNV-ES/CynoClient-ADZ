@@ -5,7 +5,7 @@ import ch.leytto.cynoclient.db.dao.DogDao
 import ch.leytto.cynoclient.db.entities.Dog
 import kotlinx.coroutines.flow.Flow
 
-class DogRepository(private val dogDao: DogDao) {
+class DogRepository(private val dogDao: DogDao) : AbstractRepository() {
 
     // Room executes all queries on a separate thread.
     // Observed Flow will notify the observer when the data has changed.

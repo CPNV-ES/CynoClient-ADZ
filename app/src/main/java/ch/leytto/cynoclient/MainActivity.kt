@@ -1,9 +1,8 @@
 package ch.leytto.cynoclient
 
-import android.content.SharedPreferences
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
@@ -19,7 +18,6 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
-import androidx.core.view.GravityCompat
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,9 +32,9 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val fab: FloatingActionButton = findViewById(R.id.fab)
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Mode : " + AppCompatDelegate.getDefaultNightMode(), Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+        fab.setOnClickListener {
+            val intent = Intent(this, CreateReportActivity::class.java)
+            startActivity(intent)
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -44,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow), drawerLayout)
+                R.id.nav_clients, R.id.nav_dogs, R.id.nav_slideshow), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 

@@ -11,11 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ch.leytto.cynoclient.CynoClientApplication
 import ch.leytto.cynoclient.R
+import ch.leytto.cynoclient.viewmodel.ViewModelFactory
 
-class DogsViewModel : Fragment() {
+class DogsFragment : Fragment() {
 
-    private val homeViewModel: HomeViewModel by viewModels {
-        HomeViewModelFactory((activity?.application as CynoClientApplication).dogRepository)
+    private val homeViewModel: DogViewModel by viewModels {
+        ViewModelFactory((activity?.application as CynoClientApplication).dogRepository)
     }
 
     override fun onCreateView(
@@ -23,9 +24,9 @@ class DogsViewModel : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        val root = inflater.inflate(R.layout.fragment_clients, container, false)
 
-        val recyclerView = root.findViewById<RecyclerView>(R.id.dogs_recycler)
+        val recyclerView = root.findViewById<RecyclerView>(R.id.clients_recycler)
         val adapter = DogListAdapter()
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this.context)
