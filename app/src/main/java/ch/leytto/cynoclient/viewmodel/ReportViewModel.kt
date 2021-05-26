@@ -6,8 +6,7 @@ import androidx.lifecycle.asLiveData
 import ch.leytto.cynoclient.db.entities.Client
 import ch.leytto.cynoclient.model.ClientRepository
 
-class ClientViewModel(private val repository: ClientRepository) : ViewModel() {
+class ReportViewModel(private val clientRepository: ClientRepository) : ViewModel() {
 
-    val allClients: LiveData<List<Client>> = repository.allClients.asLiveData();
-
+    val allClients: LiveData<List<Client>> = clientRepository.allClients.asLiveData();
 }

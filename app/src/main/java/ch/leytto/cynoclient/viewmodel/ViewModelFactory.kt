@@ -16,6 +16,9 @@ class ViewModelFactory(private val repository: AbstractRepository) : ViewModelPr
             if (modelClass.isAssignableFrom(ClientViewModel::class.java)) {
                 return ClientViewModel(repository as ClientRepository) as T
             }
+            if (modelClass.isAssignableFrom(ReportViewModel::class.java)) {
+                return ReportViewModel(repository as ClientRepository) as T
+            }
             throw IllegalArgumentException("Unknown ViewModel class")
         }
 }
