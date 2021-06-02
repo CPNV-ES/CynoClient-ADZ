@@ -7,22 +7,21 @@
     tools:context=".CreateClientActivity">
 
     <Button
-        android:id="@+id/register"
+        android:id="@+id/submitForm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="S'enregistrer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.587" />
+        app:layout_constraintVertical_bias="0.872" />
 
     <EditText
         android:id="@+id/editPersonLastName"
         android:layout_width="135dp"
         android:layout_height="41dp"
-        android:layout_marginStart="64dp"
+        android:layout_marginStart="212dp"
         android:ems="10"
         android:hint="Nom"
         android:inputType="textPersonName"
@@ -30,13 +29,13 @@
         app:layout_constraintBottom_toTopOf="@+id/editPersonEmail"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.707" />
+        app:layout_constraintVertical_bias="0.712" />
 
     <EditText
         android:id="@+id/editPersonFirstName"
         android:layout_width="135dp"
         android:layout_height="41dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginEnd="212dp"
         android:ems="10"
         android:hint="Prénom"
         android:inputType="textPersonName"
@@ -44,49 +43,70 @@
         app:layout_constraintBottom_toTopOf="@+id/editPersonEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.699" />
+        app:layout_constraintVertical_bias="0.712" />
 
     <EditText
         android:id="@+id/editPersonEmail"
         android:layout_width="284dp"
         android:layout_height="41dp"
+        android:layout_marginTop="364dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textPersonName"
         android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/editPersonPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.81" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editPersonPassword"
+        android:id="@+id/editPersonPhone"
         android:layout_width="284dp"
         android:layout_height="41dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginTop="420dp"
         android:ems="10"
-        android:hint="Mot de passe"
+        android:hint="Téléphone"
         android:inputType="textPersonName"
         android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/editPersonPasswordConfirm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editPersonPasswordConfirm"
+        android:id="@+id/editPersonStreet"
         android:layout_width="284dp"
         android:layout_height="41dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginTop="476dp"
         android:ems="10"
-        android:hint="Confirmer mot de passe"
+        android:hint="Rue"
         android:inputType="textPersonName"
         android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/register"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editPersonLocality"
+        android:layout_width="284dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="536dp"
+        android:ems="10"
+        android:hint="Localité (ex: 1400)"
+        android:inputType="textPersonName"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CheckBox"
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="284dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
