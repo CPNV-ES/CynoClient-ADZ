@@ -28,6 +28,8 @@ class CreateReportDefaultFragment : Fragment(), Step, SearchView.OnQueryTextList
 
     private lateinit var clientsSearch: SearchView
 
+    private lateinit var clientsListView: ListView
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,7 +37,7 @@ class CreateReportDefaultFragment : Fragment(), Step, SearchView.OnQueryTextList
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_create_report_default, container, false)
 
-        val clientsListView = view.findViewById<ListView>(R.id.clients_listview)
+        clientsListView = view.findViewById<ListView>(R.id.clients_listview)
         clientsAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item)
         clientsListView.adapter = clientsAdapter
         clientsListView.onItemClickListener = this
@@ -69,14 +71,13 @@ class CreateReportDefaultFragment : Fragment(), Step, SearchView.OnQueryTextList
 
     override fun onQueryTextChange(newText: String?): Boolean {
         clientsAdapter.filter.filter(newText)
+        clientsListView.visibility = View.VISIBLE
 
         return true
     }
 
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         val clientName = clientsAdapter.getItem(position)
-
-        Toast.makeText(context, clientName, Toast.LENGTH_SHORT).show()
 
         clientsSearch.setQuery(clientName, false)
 
@@ -85,5 +86,8 @@ class CreateReportDefaultFragment : Fragment(), Step, SearchView.OnQueryTextList
         inputMethodManager.hideSoftInputFromWindow(clientsSearch.windowToken, InputMethodManager.RESULT_HIDDEN)
 
         clientsSearch.clearFocus()
+
+        // We do not want the listview to take any space, we set it to GONE and not INVISIBLE
+        clientsListView.visibility = View.GONE
     }
 }
