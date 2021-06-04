@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Prénom"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:textColor="#000000" />
 
     <EditText
         android:id="@+id/editLastname"
@@ -31,7 +32,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Email"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:textColor="#000000" />
 
     <EditText
         android:id="@+id/editStreet"
@@ -57,7 +59,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Téléphone"
-        android:inputType="phone" />
+        android:inputType="phone"
+        android:textColor="#000000" />
 
     <RadioGroup
         android:id="@+id/rbGroupSex"
