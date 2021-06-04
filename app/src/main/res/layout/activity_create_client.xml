@@ -1,112 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:orientation="vertical"
     tools:context=".CreateClientActivity">
 
-    <Button
-        android:id="@+id/submitForm"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/editFirstname"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="S'enregistrer"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.872" />
+        android:ems="10"
+        android:hint="Prénom"
+        android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editPersonLastName"
-        android:layout_width="135dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="212dp"
+        android:id="@+id/editLastname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Nom"
         android:inputType="textPersonName"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/editPersonEmail"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.712" />
+        android:textColor="#000000" />
 
     <EditText
-        android:id="@+id/editPersonFirstName"
-        android:layout_width="135dp"
-        android:layout_height="41dp"
-        android:layout_marginEnd="212dp"
-        android:ems="10"
-        android:hint="Prénom"
-        android:inputType="textPersonName"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/editPersonEmail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.712" />
-
-    <EditText
-        android:id="@+id/editPersonEmail"
-        android:layout_width="284dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="364dp"
+        android:id="@+id/editEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Email"
-        android:inputType="textPersonName"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:inputType="textEmailAddress" />
 
     <EditText
-        android:id="@+id/editPersonPhone"
-        android:layout_width="284dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="420dp"
-        android:ems="10"
-        android:hint="Téléphone"
-        android:inputType="textPersonName"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editPersonStreet"
-        android:layout_width="284dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="476dp"
+        android:id="@+id/editStreet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Rue"
         android:inputType="textPersonName"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="#000000" />
 
     <EditText
-        android:id="@+id/editPersonLocality"
-        android:layout_width="284dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="536dp"
-        android:ems="10"
-        android:hint="Localité (ex: 1400)"
-        android:inputType="textPersonName"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
+        android:id="@+id/editLocality"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CheckBox"
-        tools:layout_editor_absoluteX="64dp"
-        tools:layout_editor_absoluteY="284dp" />
+        android:ems="10"
+        android:hint="Localité (Ex: 1450)"
+        android:inputType="textPersonName"
+        android:textColor="#000000" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/editPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Téléphone"
+        android:inputType="phone" />
+
+    <RadioGroup
+        android:id="@+id/rbGroupSex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/sexeLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="14dp"
+            android:text="Sexe:" />
+
+        <RadioButton
+            android:id="@+id/rbFemale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Femme" />
+
+        <RadioButton
+            android:id="@+id/rbMale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Homme" />
+
+        <RadioButton
+            android:id="@+id/rbNonspecify"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hélicoptère apache" />
+    </RadioGroup>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="143dp">
+
+        <Button
+            android:id="@+id/submitForm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="S'enregistrer"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

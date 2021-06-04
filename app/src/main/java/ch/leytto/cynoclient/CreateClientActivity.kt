@@ -7,7 +7,6 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
 import ch.leytto.cynoclient.db.CynoClientRoomDatabase
-import ch.leytto.cynoclient.db.entities.Client
 import ch.leytto.cynoclient.viewmodel.ClientViewModel
 import ch.leytto.cynoclient.viewmodel.ViewModelFactory
 import kotlinx.coroutines.CoroutineScope
@@ -22,11 +21,9 @@ class CreateClientActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_client)
-        var et_firstName = findViewById<EditText>(R.id.editPersonFirstName)
-        var et_lastName = findViewById<EditText>(R.id.editPersonLastName)
-        var et_email = findViewById<EditText>(R.id.editPersonEmail)
-        var et_password = findViewById<EditText>(R.id.editPersonPassword)
-        var et_confirmPassword = findViewById<EditText>(R.id.editPersonPasswordConfirm)
+        var et_firstName = findViewById<EditText>(R.id.editFirstname)
+        var et_lastName = findViewById<EditText>(R.id.editLastname)
+        var et_email = findViewById<EditText>(R.id.editEmail)
         var btn_submit = findViewById<Button>(R.id.submitForm)
 
         btn_submit.setOnClickListener {
