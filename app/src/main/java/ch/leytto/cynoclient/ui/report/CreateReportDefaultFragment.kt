@@ -41,6 +41,8 @@ class CreateReportDefaultFragment : Fragment(), Step, SearchView.OnQueryTextList
         clientsAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item)
         clientsListView.adapter = clientsAdapter
         clientsListView.onItemClickListener = this
+        clientsListView.visibility = View.GONE
+
 
         reportViewModel.allClients.observe(viewLifecycleOwner, Observer { clients ->
             clientsAdapter.addAll(clients.map {client: Client -> "${client.firstname} ${client.lastname}" })
@@ -48,6 +50,15 @@ class CreateReportDefaultFragment : Fragment(), Step, SearchView.OnQueryTextList
 
         clientsSearch = view.findViewById(R.id.clients_searchview)
         clientsSearch.setOnQueryTextListener(this)
+
+        clientsSearch.setOnQueryTextFocusChangeListener { _, hasFocus: Boolean ->
+            if (hasFocus) {
+                clientsListView.visibility = View.VISIBLE
+            } else {
+                // We do not want the listview to take any space, we set it to GONE and not INVISIBLE
+                clientsListView.visibility = View.GONE
+            }
+        }
 
         return view
     }
@@ -87,7 +98,5 @@ class CreateReportDefaultFragment : Fragment(), Step, SearchView.OnQueryTextList
 
         clientsSearch.clearFocus()
 
-        // We do not want the listview to take any space, we set it to GONE and not INVISIBLE
-        clientsListView.visibility = View.GONE
     }
 }
