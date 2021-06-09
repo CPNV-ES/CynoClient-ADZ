@@ -7,13 +7,17 @@ import android.widget.EditText
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.widget.addTextChangedListener
+import androidx.lifecycle.lifecycleScope
 import ch.leytto.cynoclient.db.CynoClientRoomDatabase
 import ch.leytto.cynoclient.db.entities.Client
 import ch.leytto.cynoclient.viewmodel.ClientViewModel
 import ch.leytto.cynoclient.viewmodel.ViewModelFactory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
-import java.util.logging.Logger
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.launch
 
 class CreateClientActivity : AppCompatActivity() {
     val applicationScope = CoroutineScope(SupervisorJob())
@@ -24,10 +28,8 @@ class CreateClientActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_client)
-        var sexe: Boolean
-        sexe = true
-
-
+        var sex: Boolean
+        sex = true
 
         var et_firstName = findViewById<EditText>(R.id.editFirstname)
         var et_lastName = findViewById<EditText>(R.id.editLastname)
@@ -37,13 +39,31 @@ class CreateClientActivity : AppCompatActivity() {
         var et_phone = findViewById<EditText>(R.id.editPhone)
         var rb_sexe = findViewById<RadioGroup>(R.id.rbGroupSex)
         var btn_submit = findViewById<Button>(R.id.submitForm)
+        et_firstName.addTextChangedListener(){
+            viewModel.setFirstname(it.toString())
+        }
+        et_lastName.addTextChangedListener(){
+            viewModel.setLastname(it.toString())
+        }
+        et_email.addTextChangedListener(){
+            viewModel.setEmail(it.toString())
+        }
+        et_street.addTextChangedListener(){
+            viewModel.setStreet(it.toString())
+        }
+        et_locality.addTextChangedListener(){
+            viewModel.setLocality(it.toString())
+        }
+        et_phone.addTextChangedListener(){
+            viewModel.setPhone(it.toString())
+        }
         rb_sexe.setOnCheckedChangeListener{group: RadioGroup?, checkedId: Int ->
             if (checkedId === R.id.rbFemale) {
-                sexe = false
+                sex = false
             }else if (checkedId === R.id.rbMale){
-                sexe = true
+                sex = true
             }else{
-                sexe = false
+                sex = false
             }
 
         }
@@ -55,9 +75,15 @@ class CreateClientActivity : AppCompatActivity() {
             var locality = et_locality.text.toString()
             var phone = et_phone.text.toString()
 
-            viewModel.insertClient(Client(0,firstname,lastname,sexe,email,phone,street,locality.toInt()))
+            viewModel.insertClient(Client(0,firstname,lastname,sex,email,phone,street,locality.toInt()))
             Toast.makeText(this@CreateClientActivity, "L'utilisateur "+et_firstName.text +" "+ et_lastName.text+" a bien été créé.",Toast.LENGTH_LONG).show()
         }
+        lifecycleScope.launch {
+            viewModel.isSubmitEnabled.collect { value ->
+                btn_submit.isEnabled = value
+            }
+        }
+
     }
 
 }
