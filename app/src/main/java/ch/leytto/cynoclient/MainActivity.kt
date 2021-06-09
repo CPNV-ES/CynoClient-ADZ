@@ -16,6 +16,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
+import ch.leytto.cynoclient.ui.clients.ClientDetailsFragment
 import com.leinardi.android.speeddial.SpeedDialActionItem
 import com.leinardi.android.speeddial.SpeedDialView
 
@@ -44,6 +45,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.fab_action_create_client -> {
                     val intent = Intent(this, CreateClientActivity::class.java)
                     startActivity(intent)
+
                     return@OnActionSelectedListener true
                 }
                 R.id.fab_action_create_report -> {

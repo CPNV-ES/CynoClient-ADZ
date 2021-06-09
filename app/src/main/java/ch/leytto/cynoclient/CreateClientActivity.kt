@@ -26,6 +26,9 @@ class CreateClientActivity : AppCompatActivity() {
         setContentView(R.layout.activity_create_client)
         var sexe: Boolean
         sexe = true
+
+
+
         var et_firstName = findViewById<EditText>(R.id.editFirstname)
         var et_lastName = findViewById<EditText>(R.id.editLastname)
         var et_email = findViewById<EditText>(R.id.editEmail)
@@ -51,6 +54,7 @@ class CreateClientActivity : AppCompatActivity() {
             var street = et_street.text.toString()
             var locality = et_locality.text.toString()
             var phone = et_phone.text.toString()
+
             viewModel.insertClient(Client(0,firstname,lastname,sexe,email,phone,street,locality.toInt()))
             Toast.makeText(this@CreateClientActivity, "L'utilisateur "+et_firstName.text +" "+ et_lastName.text+" a bien été créé.",Toast.LENGTH_LONG).show()
         }
