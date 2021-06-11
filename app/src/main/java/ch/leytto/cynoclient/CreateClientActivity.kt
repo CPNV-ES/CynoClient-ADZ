@@ -30,7 +30,7 @@ class CreateClientActivity : AppCompatActivity() {
         setContentView(R.layout.activity_create_client)
         var sex: Boolean
         sex = true
-
+        // Récupération des élements de l'UI
         var et_firstName = findViewById<EditText>(R.id.editFirstname)
         var et_lastName = findViewById<EditText>(R.id.editLastname)
         var et_email = findViewById<EditText>(R.id.editEmail)
