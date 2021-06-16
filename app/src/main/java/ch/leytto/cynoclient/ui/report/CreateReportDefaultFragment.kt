@@ -21,7 +21,8 @@ import com.stepstone.stepper.VerificationError
 class CreateReportDefaultFragment : Fragment(), Step, SearchView.OnQueryTextListener, AdapterView.OnItemClickListener {
 
     private val reportViewModel: ReportViewModel by viewModels {
-        ViewModelFactory((activity?.application as CynoClientApplication).clientRepository)
+        val app = activity?.application as CynoClientApplication
+        ViewModelFactory(app.clientRepository, app.dogRepository)
     }
 
     private lateinit var clientsAdapter: ArrayAdapter<String>
@@ -37,12 +38,20 @@ class CreateReportDefaultFragment : Fragment(), Step, SearchView.OnQueryTextList
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_create_report_default, container, false)
 
-        clientsListView = view.findViewById<ListView>(R.id.clients_listview)
+        // TODO: Use AutoCompleteTextView instead of doing things by hand duuh
+        clientsListView = view.findViewById(R.id.clients_listview)
         clientsAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item)
         clientsListView.adapter = clientsAdapter
         clientsListView.onItemClickListener = this
         clientsListView.visibility = View.GONE
 
+        val dogsSpinner = view.findViewById<Spinner>(R.id.dogs_spinner);
+        val dogsAdapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_dropdown_item)
+        dogsSpinner.adapter = dogsAdapter
+
+        reportViewModel.allDogs.observe(viewLifecycleOwner, Observer { dogs ->
+            dogsAdapter.addAll(dogs.map { dog -> dog.noun })
+        })
 
         reportViewModel.allClients.observe(viewLifecycleOwner, Observer { clients ->
             clientsAdapter.addAll(clients.map {client: Client -> "${client.firstname} ${client.lastname}" })

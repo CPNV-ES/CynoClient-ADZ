@@ -3,31 +3,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".ui.report.CreateReportDefaultFragment">
 
 
-    <SearchView
-        android:id="@+id/clients_searchview"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:iconifiedByDefault="false"
-        android:queryHint="Sélectionnez un client"
-        android:theme="@style/ThemeOverlay.SearchView">
+        android:layout_height="wrap_content">
 
-    </SearchView>
+        <SearchView
+            android:id="@+id/clients_searchview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:iconifiedByDefault="false"
+            android:paddingStart="-32dp"
+            android:queryHint="Sélectionnez un client"
+            android:theme="@style/ThemeOverlay.SearchView"
+            tools:ignore="RtlSymmetry"
+            >
 
-    <ListView
-        android:id="@+id/clients_listview"
-        android:layout_width="match_parent"
-        android:layout_height="400dp">
+        </SearchView>
 
-    </ListView>
+        <ListView
+            android:id="@+id/clients_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/clients_searchview"
+            tools:visibility="gone">
+
+        </ListView>
+
+    </RelativeLayout>
 
     <Spinner
         android:id="@+id/dogs_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="4dp" />
+        android:padding="4dp"
+        tools:listitem="@android:layout/simple_list_item_1" />
 
 </LinearLayout>

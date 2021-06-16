@@ -8,13 +8,28 @@ import com.stepstone.stepper.StepperLayout
 import com.stepstone.stepper.VerificationError
 
 class CreateReportActivity : AppCompatActivity(), StepperLayout.StepperListener {
+
+    // TODO: Move currentStep into ViewModel as onCreate is called when the phone is rotated for example...
+    var currentStep: Int = 0
+    lateinit var stepperLayout: StepperLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_report)
 
-        val stepperLayout = findViewById<StepperLayout>(R.id.stepper_layout)
+        stepperLayout = findViewById(R.id.stepper_layout)
         stepperLayout.adapter = ReportStepperAdapter(this, supportFragmentManager)
         stepperLayout.setListener(this)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        stepperLayout.currentStepPosition = currentStep
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        stepperLayout.currentStepPosition = currentStep
     }
 
     override fun onCompleted(completeButton: View?) {
@@ -24,6 +39,7 @@ class CreateReportActivity : AppCompatActivity(), StepperLayout.StepperListener 
     }
 
     override fun onStepSelected(newStepPosition: Int) {
+        currentStep = newStepPosition
     }
 
     override fun onReturn() {
