@@ -14,4 +14,6 @@
     <string name="dark_mode">Mode Nuit</string>
     <string name="content_description_light_mode">Changer vers le mode jour</string>
     <string name="content_description_dark_mode">Changer vers le mode nuit</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

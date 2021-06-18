@@ -6,8 +6,6 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -18,6 +16,9 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
+import ch.leytto.cynoclient.ui.clients.ClientDetailsFragment
+import com.leinardi.android.speeddial.SpeedDialActionItem
+import com.leinardi.android.speeddial.SpeedDialView
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,11 +32,31 @@ class MainActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        val fab: FloatingActionButton = findViewById(R.id.fab)
-        fab.setOnClickListener {
-            val intent = Intent(this, CreateReportActivity::class.java)
-            startActivity(intent)
-        }
+        val speedDial = findViewById<SpeedDialView>(R.id.speed_dial)
+        speedDial.addActionItem(
+            SpeedDialActionItem.Builder(R.id.fab_action_create_client, R.drawable.ic_baseline_person_add)
+                .create())
+        speedDial.addActionItem(
+            SpeedDialActionItem.Builder(R.id.fab_action_create_report, R.drawable.ic_outline_note_add).create()
+        )
+
+        speedDial.setOnActionSelectedListener(SpeedDialView.OnActionSelectedListener { actionItem ->
+            when (actionItem.id) {
+                R.id.fab_action_create_client -> {
+                    val intent = Intent(this, CreateClientActivity::class.java)
+                    startActivity(intent)
+
+                    return@OnActionSelectedListener true
+                }
+                R.id.fab_action_create_report -> {
+                    val intent = Intent(this, CreateReportActivity::class.java)
+                    startActivity(intent)
+                    return@OnActionSelectedListener true
+                }
+            }
+            false
+        })
+
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
