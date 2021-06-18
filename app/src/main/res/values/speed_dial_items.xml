@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="fab_action_create_client" type="id" />
+    <item name="fab_action_create_report" type="id" />
+    <item name="fab_action3" type="id" />
+    <item name="fab_action4" type="id" />
+</resources>
