@@ -30,7 +30,7 @@ class CreateClientActivity : AppCompatActivity() {
         setContentView(R.layout.activity_create_client)
         var sex: Boolean
         sex = true
-        // Récupération des élements de l'UI
+        // Get UI elements
         var et_firstName = findViewById<EditText>(R.id.editFirstname)
         var et_lastName = findViewById<EditText>(R.id.editLastname)
         var et_email = findViewById<EditText>(R.id.editEmail)
@@ -39,6 +39,8 @@ class CreateClientActivity : AppCompatActivity() {
         var et_phone = findViewById<EditText>(R.id.editPhone)
         var rb_sexe = findViewById<RadioGroup>(R.id.rbGroupSex)
         var btn_submit = findViewById<Button>(R.id.submitForm)
+        // Set listener whenever the fields is changed
+        //------------
         et_firstName.addTextChangedListener(){
             viewModel.setFirstname(it.toString())
         }
@@ -67,6 +69,7 @@ class CreateClientActivity : AppCompatActivity() {
             }
 
         }
+        //------------
         btn_submit.setOnClickListener {
             val firstname = et_firstName.text.toString()
             val lastname = et_lastName.text.toString()

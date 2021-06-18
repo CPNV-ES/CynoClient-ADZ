@@ -17,15 +17,13 @@ class ClientViewModel(private val repository: ClientRepository) : ViewModel() {
     private val _locality = MutableStateFlow("")
     private val _phone = MutableStateFlow("")
 
-
+    // Return true if all the conditions are valid
     val isSubmitEnabled: Flow<Boolean> = combine(_firstname, _lastname, _email, _street, _locality) { firstname, lastname, email, street, locality ->
         val isFirstnameCorrect = firstname.length > 2
         val isLastnameCorrect = lastname.length > 2
         val isEmailCorrect = email.length > 2
         val isStreetCorrect = street.length > 2
         val isLocalityCorrect = locality.length > 2
-        //val isEmailCorrect = email.matches("".toRegex())
-
         return@combine isFirstnameCorrect and isLastnameCorrect and isEmailCorrect and isStreetCorrect and isLocalityCorrect
     }
 
