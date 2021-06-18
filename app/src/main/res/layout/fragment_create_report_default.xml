@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".ui.report.CreateReportDefaultFragment">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <SearchView
+            android:id="@+id/clients_searchview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:iconifiedByDefault="false"
+            android:paddingStart="-32dp"
+            android:queryHint="Sélectionnez un client"
+            android:theme="@style/ThemeOverlay.SearchView"
+            tools:ignore="RtlSymmetry"
+            >
+
+        </SearchView>
+
+        <ListView
+            android:id="@+id/clients_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/clients_searchview"
+            tools:visibility="gone">
+
+        </ListView>
+
+    </RelativeLayout>
+
+    <Spinner
+        android:id="@+id/dogs_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        tools:listitem="@android:layout/simple_list_item_1" />
+
+</LinearLayout>

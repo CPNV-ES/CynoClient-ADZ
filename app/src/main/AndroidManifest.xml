@@ -10,8 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CynoClient">
-        <activity android:name=".CreateClientActivity"></activity>
-        <activity android:name=".ClientInfoActivity"></activity>
+        <activity android:name=".CreateClientActivity" />
+        <activity android:name=".ClientInfoActivity" />
         <activity
             android:name=".CreateReportActivity"
             android:label="Créer un nouveau rapport" />
